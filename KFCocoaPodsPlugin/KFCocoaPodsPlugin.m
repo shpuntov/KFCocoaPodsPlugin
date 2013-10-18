@@ -208,7 +208,8 @@ typedef NS_ENUM(NSUInteger, KFMenuItemTag)
         
         NSMenu *submenu = [[NSMenu alloc] initWithTitle:@"CocoaPods Submenu"];
         
-        NSMenuItem *editPodfileMenuItem = [[NSMenuItem alloc] initWithTitle:@"Edit Podfile" action:@selector(editPodfileAction:) keyEquivalent:@""];
+        NSMenuItem *editPodfileMenuItem = [[NSMenuItem alloc] initWithTitle:@"Edit Podfile" action:@selector(editPodfileAction:) keyEquivalent:@"P"];
+        [editPodfileMenuItem setKeyEquivalentModifierMask:(NSCommandKeyMask | NSControlKeyMask)];
         [editPodfileMenuItem setTarget:self];
         editPodfileMenuItem.tag = KFMenuItemTagEditPodfile;
         [submenu addItem:editPodfileMenuItem];
@@ -218,7 +219,8 @@ typedef NS_ENUM(NSUInteger, KFMenuItemTag)
         checkMenuItem.tag = KFMenuItemTagCheckForOutdatedPods;
         [submenu addItem:checkMenuItem];
         
-        NSMenuItem *updateMenuItem = [[NSMenuItem alloc] initWithTitle:@"Run Update/Install" action:@selector(podUpdateAction:) keyEquivalent:@""];
+        NSMenuItem *updateMenuItem = [[NSMenuItem alloc] initWithTitle:@"Run Update/Install" action:@selector(podUpdateAction:) keyEquivalent:@"U"];
+        [updateMenuItem setKeyEquivalentModifierMask:(NSCommandKeyMask | NSControlKeyMask)];
         [updateMenuItem setTarget:self];
         updateMenuItem.tag = KFMenuItemTagUpdate;
         [submenu addItem:updateMenuItem];
