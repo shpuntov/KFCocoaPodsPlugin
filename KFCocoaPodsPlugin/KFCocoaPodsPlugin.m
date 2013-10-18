@@ -326,8 +326,10 @@ typedef NS_ENUM(NSUInteger, KFMenuItemTag)
     
     [_taskController runPodCommand:@[command] directory:[KFWorkspaceController currentWorkspaceDirectoryPath] outputHandler:^(DSUnixTask *taskLauncher, NSString *newOutput)
     {
-        [weakSelf printMessage:newOutput forTask:taskLauncher];
-        
+        if (![newOutput hasPrefix:@"begin"]) {
+            [weakSelf printMessage:newOutput forTask:taskLauncher];
+        }
+
     } terminationHandler:^(DSUnixTask *task)
     {
         NSString *title = NSLocalizedString(@"Cocoapods update succeeded", nil);
