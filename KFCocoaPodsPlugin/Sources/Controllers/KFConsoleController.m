@@ -65,11 +65,6 @@
 
 - (void)logMessage:(id)object printBold:(BOOL)isBold forTask:(DSUnixTask *)task
 {
-    if ([object isKindOfClass:[NSString class]])
-    {
-        NSAttributedString *attributedString = [self.ansiEscapeHelper attributedStringWithANSIEscapedString:object];
-        object = attributedString;
-    }
     IDEConsoleTextView *console;
     if (task == nil)
     {
@@ -90,8 +85,8 @@
     }
     
     
-    console.logMode = isBold ? 2 : 1;
-    
+    console.logMode = 1;
+
     [console insertText:object];
     [console insertNewline:self];
     
